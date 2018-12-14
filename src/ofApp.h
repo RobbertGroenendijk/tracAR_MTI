@@ -3,6 +3,10 @@
 #include "ofxiOS.h"
 #include <ARKit/ARKit.h>
 #include "ofxARKit.h"
+#include "ofxGui.h"
+
+#include "geoRenderer.h"
+
 class ofApp : public ofxiOSApp {
     
 public:
@@ -27,13 +31,19 @@ public:
     void gotMemoryWarning();
     void deviceOrientationChanged(int newOrientation);
     
-    vector < matrix_float4x4 > mats;
-    vector<ARAnchor*> anchors;
+    GeoRenderer geoRenderer;
+    
+    // ====== CAMERA ====== //
     ofCamera camera;
     
     // ====== AR STUFF ======== //
     ARSession * session;
     ARRef processor;
+    vector < matrix_float4x4 > mats;
+    vector<ARAnchor*> anchors;
+    
+    // ====== STYLES ====== //
+    ofTrueTypeFont font;
     
     
 };
